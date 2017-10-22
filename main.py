@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from delta_bicluster import delta_bicluster
 from spectral_bicluster import spectral_bicluster
+from info_bicluster import info_bicluster
 
 
 def main():
@@ -20,8 +21,10 @@ def main():
 	# Shuffle
 	A_ = A[np.random.permutation(10)].T[np.random.permutation(10)].T
 
+	np.random.seed()
 	# B = delta_bicluster(A_, 0.001)
-	B = spectral_bicluster(A_)
+	# B = spectral_bicluster(A_)
+	B = info_bicluster(A_, 2, 2)
 
 	# Display original, shuffled, clusterd matrix
 	fig, axes = plt.subplots(1,3)
